@@ -7,17 +7,19 @@ from machine import Pin
 
 pump = Pin(16, Pin.OUT)
 pump.value(0)
-
 pump_state = False
+
+light = Pin(15, Pin.OUT)
+light.value(0)
+light_state = False
 
 garden_state = True
 garden_state_readable = "Automated"
 
-light_state = True
 
 
-ssid = "Woodside"
-password = "172-Wood"
+ssid = "Droid"
+password = "password123"
 
 def webpage(pump_state, garden_state, garden_state_readable):
     if not garden_state:
@@ -176,10 +178,12 @@ while True:
             pump_state = False
 
         elif request == "/lighton":
+            light.value(1)
             print("light on")
             light_state = True
 
         elif request == "/lightoff":
+            light.value(0)
             print("light off")
             light_state = False
 
