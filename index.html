@@ -28,6 +28,45 @@
             <a href="lightoff"><button class="btn">Off</button></a> 
         </div>
     </div>
+    <br><br>
+    <div class="operation-mode" style="justify-content: space-around;">
+
+        <div class="box3">
+            <form action="/action_page.php"></form>
+            <span class="title-text">Light state: </span>
+            <span style="padding-right: 30px";></span>
+            <label for="lighttime">on for </label></span>
+            <span style="padding-right: 7px";></span>
+            <input type="number" id="lightontime" name="lightontime" style="width: 70px">
+            <span style="padding-right: 7px";></span>
+            <label for="lighttime"> hours </label></span>
+            <span style="padding-right: 20px";></span>
+            <label for="lighttime">off for </label>
+            <span style="padding-right: 7px";></span>
+            <input type="number" id="lightofftime" name="lightofftime" style="width: 70px">
+            <span style="padding-right: 7px";></span>
+            <label for="lighttime"> hours </label></span>
+        </form>
+        </div>
+        <br><br>
+        <div class="box4">
+            <form action="/action_page.php">
+                <span class="title-text">Set moisture level:</span>
+                <span style="padding-right: 40px";></span>
+                <select name="moisture" id="moisture">
+                <option value="50">50%</option>
+                <option value="60">60%</option>
+                <option value="70">70%</option>
+                <option value="80">80%</option>
+                </select>
+            </form>
+        </div>
+        <div class="box5">
+            <input type="submit" value="Submit">
+        </div>
+
+        
+    </div>
 </body>
 
 <style>
@@ -36,6 +75,12 @@
         --light-green: #52d656;
         --dark-green: #219c27;
     }
+    
+    .title-text {
+    font-size: 1.3em;  
+    font-weight: bold; 
+}
+    
     .box1{
         display: inline-block;
         border-color: #388E3C;
@@ -43,6 +88,7 @@
         border-style: double;
         padding: 10px;
         margin-right: 20px;
+        width: 30%;
     }
 
     .box2{
@@ -52,7 +98,39 @@
         border-style: double;
         padding: 10px;
         margin-left: 20px;
+        width: 30%;
+    }
 
+    .box3{
+        display: inline-block;
+        border-color: #388E3C;
+        border-width: 2px;
+        border-style: double;
+        padding: 10px;
+        margin-left: 20px;
+        width: 70%;
+    }
+
+    .box4{
+        display: inline-block;
+        border-color: #388E3C;
+        border-width: 2px;
+        border-style: double;
+        padding: 10px;
+        margin-left: 20px;
+        width: 48%;
+        height: 50px
+    }
+
+    .box5{
+        display: inline-block;
+        border-color: #388E3C;
+        border-width: 2px;
+        border-style: double;
+        padding: 10px;
+        margin-left: 20px;
+        width: 17%;
+        height: 50px
     }
 
     body{
