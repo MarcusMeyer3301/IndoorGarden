@@ -1,0 +1,86 @@
+
+    
+    .title-text {
+        font-size: 1.3em;  
+        font-weight: bold; 
+    }
+        
+        .box1{
+            display: inline-block;
+            border-color: #388E3C;
+            border-width: 2px;
+            border-style: double;
+            padding: 10px;
+            margin-right: 20px;
+            width: 30%;
+        }
+    
+        .box2{
+            display: inline-block;
+            border-color: #388E3C;
+            border-width: 2px;
+            border-style: double;
+            padding: 10px;
+            margin-left: 20px;
+            width: 30%;
+        }
+    
+        .box3{
+            display: inline-block;
+            border-color: #388E3C;
+            border-width: 2px;
+            border-style: double;
+            padding: 10px;
+            margin-left: 20px;
+            width: 70%;
+        }
+    
+        .box4{
+            display: inline-block;
+            border-color: #388E3C;
+            border-width: 2px;
+            border-style: double;
+            padding: 10px;
+            margin-left: 20px;
+            width: 48%;
+            height: 50px
+        }
+    
+        .box5{
+            display: inline-block;
+            border-color: #388E3C;
+            border-width: 2px;
+            border-style: double;
+            padding: 10px;
+            margin-left: 20px;
+            width: 17%;
+            height: 50px
+        }
+    
+        body{
+            background-color: #8D6E63;
+        }
+    
+        .operation-mode{
+            background-color: #52d656;
+            margin-left: 20%;
+            margin-right: 20%;
+            text-align: center;
+            padding: 20px;
+            border-color: #9aff9d;
+            border-width: 2px;
+            border-style: dashed;
+        }
+        
+        #title{
+            text-align: center; 
+            color: whitesmoke;
+            text-shadow: 5px 5px 3px #000000;
+        }
+    
+        .btn{
+            border-radius: 50%;
+            padding: 10px;
+            border-color: #388E3C;
+            background-color: #219c27;
+        }

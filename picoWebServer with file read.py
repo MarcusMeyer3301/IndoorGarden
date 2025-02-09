@@ -8,13 +8,14 @@ from stemma_soil_sensor import StemmaSoilSensor
 SDA_PIN = 4 # GPIO 4 
 SCL_PIN = 5 # GPIO 5
 
-
+'''
 i2c = I2C(0, sda=Pin(SDA_PIN), scl=Pin(SCL_PIN), freq=400000)
 
 time.sleep(2)
 stemma_soil_sensor = StemmaSoilSensor(i2c)
 seesaw = stemma_soil_sensor # Data Sheet = ~200 (very dry) to ~2000 (very wet) 1015 = Wet, 331 = Dry
 time.sleep(2)
+'''
 
 pump = Pin(16, Pin.OUT)
 pump.value(0)
@@ -35,21 +36,16 @@ password = "password123"
 
 def webpage(pump_state, garden_state, garden_state_readable, moisture):
     if not garden_state:
-        manual_mode_html = f'''<br>
-    <br>
-    <div class="operation-mode" style="justify-content: space-around;">
-        <div class="box1">
-            <h3>Pump State: {pump_state}</h3>
-            <a href="pumpon"><button class="btn">On</button></a>
-            <a href="pumpoff"><button class="btn">Off</button></a> 
-        </div>
-        <div class="box2">
-            <h3>Grow Light State: {light_state}</h3>
-            <a href="lighton"><button class="btn">On</button></a>
-            <a href="lightoff"><button class="btn">Off</button></a> 
-        </div>
-    </div>
-        '''
+        manual_mode_html = ''
+        with open("manual_mode.html", "r") as file:
+            for line in file:
+                manual_mode_html += line 
+
+            print(manual_mode_html)
+
+        manual_mode_html = manual_mode_html.format(pump_state=pump_state, light_state=light_state, garden_state=garden_state)
+        return str(manual_mode_html)
+
     else:
         manual_mode_html = ""
 
@@ -223,7 +219,7 @@ while True:
             print("Running in manual mode")
             garden_state = False
             garden_state_readable = "Manual"
-
+            '''
         elif request == "/moisture":
             moisture = seesaw.get_moisture()
             temperature = seesaw.get_temp()
@@ -231,7 +227,7 @@ while True:
             conn.send('HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n')
             conn.send(resp)
             conn.close()
-            
+            '''         
 
 
         resp = webpage(pump_state, garden_state, garden_state_readable, 0)

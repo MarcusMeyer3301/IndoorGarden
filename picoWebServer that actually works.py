@@ -34,8 +34,29 @@ ssid = "Droid"
 password = "password123"
 
 def webpage(pump_state, garden_state, garden_state_readable, moisture):
-    if not garden_state:
-        manual_mode_html = f'''<br>
+    if garden_state: # for automated
+        html = f'''
+
+        '''
+    else: # manual mode
+        html = f'''
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indoor Garden</title>
+</head>
+<body>
+    <br>
+    <h1 id="title">Welcome to your Indoor Garden!</h1>
+    <br>
+    <div class="operation-mode">
+        <h3>Current Operation mode: {garden_state}</h3>
+        <a href="automated"><button class="btn">Automated</button></a>
+        <a href="manual"><button class="btn">Manual</button></a> 
+    </div>    
+    <br>
     <br>
     <div class="operation-mode" style="justify-content: space-around;">
         <div class="box1">
@@ -49,31 +70,8 @@ def webpage(pump_state, garden_state, garden_state_readable, moisture):
             <a href="lightoff"><button class="btn">Off</button></a> 
         </div>
     </div>
-        '''
-    else:
-        manual_mode_html = ""
-
-    html = f'''<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indoor Garden</title>
-</head>
-<body>
-    <br>
-    <h1 id="title">Welcome to your Indoor Garden!</h1>
-    <br>
-    <div class="operation-mode">
-        <h3>Current Operation mode: {garden_state_readable}</h3>
-        <a href="automated"><button class="btn">Automated</button></a>
-        <a href="manual"><button class="btn">Manual</button></a>
-        <h2 id="moisture-value">Moisture {moisture}</h2>
-    </div>
-    <button onclick="loadMoistureValue()"> LOAD MOISTURE </button>
-
-    {manual_mode_html}
-
+    <br><br>
+    
 </body>
 
 <style>
@@ -82,7 +80,12 @@ def webpage(pump_state, garden_state, garden_state_readable, moisture):
         --light-green: #52d656;
         --dark-green: #219c27;
     }}
-
+    
+    .title-text {{
+    font-size: 1.3em;  
+    font-weight: bold; 
+}}
+    
     .box1{{
         display: inline-block;
         border-color: #388E3C;
@@ -90,6 +93,7 @@ def webpage(pump_state, garden_state, garden_state_readable, moisture):
         border-style: double;
         padding: 10px;
         margin-right: 20px;
+        width: 30%;
     }}
 
     .box2{{
@@ -99,7 +103,39 @@ def webpage(pump_state, garden_state, garden_state_readable, moisture):
         border-style: double;
         padding: 10px;
         margin-left: 20px;
+        width: 30%;
+    }}
 
+    .box3{{
+        display: inline-block;
+        border-color: #388E3C;
+        border-width: 2px;
+        border-style: double;
+        padding: 10px;
+        margin-left: 20px;
+        width: 70%;
+    }}
+
+    .box4{{
+        display: inline-block;
+        border-color: #388E3C;
+        border-width: 2px;
+        border-style: double;
+        padding: 10px;
+        margin-left: 20px;
+        width: 48%;
+        height: 50px
+    }}
+
+    .box5{{
+        display: inline-block;
+        border-color: #388E3C;
+        border-width: 2px;
+        border-style: double;
+        padding: 10px;
+        margin-left: 20px;
+        width: 17%;
+        height: 50px
     }}
 
     body{{
@@ -115,38 +151,24 @@ def webpage(pump_state, garden_state, garden_state_readable, moisture):
         border-color: #9aff9d;
         border-width: 2px;
         border-style: dashed;
-    }}
+    }
     
     #title{{
         text-align: center; 
         color: whitesmoke;
         text-shadow: 5px 5px 3px #000000;
-    }}
+    }
 
     .btn{{
         border-radius: 50%;
         padding: 10px;
         border-color: #388E3C;
         background-color: var(--dark-green)
-    }}
+    }
 </style>
-<script>
-function loadMoistureValue(){{
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {{
-        document.getElementById("moisture-value").innerHTML = this.responseText;
-        
-    }}
-    xhttp.open("GET", "/moisture", true);
-    xhttp.send();
-}}
-
-
-
-</script>
-</html>
-    '''
-
+</html>        
+'''
+    
     return str(html)
 
 
